@@ -1,0 +1,130 @@
+#include <iostream>
+using namespace std;
+
+char squarenum[10] = {'o', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+
+int winnercheck();
+void tic_toe_board();
+
+int main()
+{
+    int player = 1, i, options;
+
+    char marks;
+    do
+    {
+        tic_toe_board();
+        player = (player % 2) ? 1 : 2;
+
+        cout << "Player " << player << ", enter a number:  ";
+        cin >> options;
+
+        marks = (player == 1) ? 'X' : 'O';
+
+        if (options == 1 && squarenum[1] == '1')
+
+            squarenum[1] = marks;
+        else if (options == 2 && squarenum[2] == '2')
+
+            squarenum[2] = marks;
+        else if (options == 3 && squarenum[3] == '3')
+
+            squarenum[3] = marks;
+        else if (options == 4 && squarenum[4] == '4')
+
+            squarenum[4] = marks;
+        else if (options == 5 && squarenum[5] == '5')
+
+            squarenum[5] = marks;
+        else if (options == 6 && squarenum[6] == '6')
+
+            squarenum[6] = marks;
+        else if (options == 7 && squarenum[7] == '7')
+
+            squarenum[7] = marks;
+        else if (options == 8 && squarenum[8] == '8')
+
+            squarenum[8] = marks;
+        else if (options == 9 && squarenum[9] == '9')
+
+            squarenum[9] = marks;
+        else
+        {
+            cout << "Invalid move ";
+
+            player--;
+            cin.ignore();
+            cin.get();
+        }
+        i = winnercheck();
+
+        player++;
+    } while (i == -1);
+    tic_toe_board();
+    if (i == 1)
+
+        cout << "==>\aPlayer " << --player << " win ";
+    else
+        cout << "==>\aGame draw";
+
+    cin.ignore();
+    cin.get();
+    return 0;
+}
+
+int winnercheck()
+{
+    if (squarenum[1] == squarenum[2] && squarenum[2] == squarenum[3])
+
+        return 1;
+    else if (squarenum[4] == squarenum[5] && squarenum[5] == squarenum[6])
+
+        return 1;
+    else if (squarenum[7] == squarenum[8] && squarenum[8] == squarenum[9])
+
+        return 1;
+    else if (squarenum[1] == squarenum[4] && squarenum[4] == squarenum[7])
+
+        return 1;
+    else if (squarenum[2] == squarenum[5] && squarenum[5] == squarenum[8])
+
+        return 1;
+    else if (squarenum[3] == squarenum[6] && squarenum[6] == squarenum[9])
+
+        return 1;
+    else if (squarenum[1] == squarenum[5] && squarenum[5] == squarenum[9])
+
+        return 1;
+    else if (squarenum[3] == squarenum[5] && squarenum[5] == squarenum[7])
+
+        return 1;
+    else if (squarenum[1] != '1' && squarenum[2] != '2' && squarenum[3] != '3' && squarenum[4] != '4' && squarenum[5] != '5' && squarenum[6] != '6' && squarenum[7] != '7' && squarenum[8] != '8' && squarenum[9] != '9')
+
+        return 0;
+    else
+        return -1;
+}
+
+void tic_toe_board()
+{
+    cout << "\n\n\t\tTic Tac Toe\t\n\n";
+
+    cout << "Player 1 (X)"<<endl;
+    cout<<"Player 2 (O)"<<endl;
+
+    cout << "     |     |     " << endl;
+    cout << "  " << squarenum[1] << "  |  " << squarenum[2] << "  |  " << squarenum[3] << endl;
+
+    cout << "__________________" << endl;
+    cout << "     |     |     " << endl;
+
+    cout << "  " << squarenum[4] << "  |  " << squarenum[5] << "  |  " << squarenum[6] << endl;
+
+    cout << "__________________" << endl;
+    cout << "     |     |     " << endl;
+
+    cout << "  " << squarenum[7] << "  |  " << squarenum[8] << "  |  " << squarenum[9] << endl;
+
+    cout << "     |     |     " << endl
+         << endl;
+}
